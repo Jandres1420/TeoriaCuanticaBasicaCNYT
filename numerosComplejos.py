@@ -123,7 +123,6 @@ def inversoVector(vect):
         actual = vect[x]
         vect[x] = conjugadoComplejos(actual)
         vect[x][0] = - actual[0]
-    print("Inverso del vector " + str(vect))
     return vect
 
 
@@ -131,14 +130,12 @@ def sumaMatricesComplejas(mat1, mat2):
     for i in range(len(mat1)):
         for j in range(len(mat1[0])):
             mat1[i][j] = sumarComplejos(mat1[i][j], mat2[i][j])
-    print("suma de matrices complejas : " + str(mat1))
     return mat1
 
 
 def inversoMatriz(mat):
     for i in range(len(mat)):
         mat[i] = inversoVector(mat[i])
-    print("inverso de Matriz " + str(mat))
     return mat
 
 
@@ -148,7 +145,6 @@ def multiplicarEscalarMatriz(c1, mat):
         for j in range(len(mat[0])):
 
             lista.append(multiplicarComplejos(c1, mat[i][j]))
-    print("multiplicacion Escalar por matriz " + str(lista))
     return lista
 
 
@@ -164,7 +160,6 @@ def accionMatrizVector(matrix, vector):
 
                 mult = multiplicarComplejos(matrix[i][j], vector[j])
                 answ[i] = sumarComplejos(answ[i], mult)
-        print("Accion entre matriz vector " + str(answ))
         return answ
     print("Las dimensiones de las matrices, no son los adecuados para su multiplicacion")
 
@@ -175,7 +170,6 @@ def transpuestaMatriz(matrix):
     for i in range(len(matrix[0])):
         for j in range(len(matrix)):
             answ[i][j] = matrix[j][i]
-    print("Transpuesta de la matriz " + str(answ))
     return answ
 
 
@@ -183,13 +177,10 @@ def conjugadaMatriz(matrix):
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
             matrix[i][j] = conjugadoComplejos(matrix[i][j])
-    print("La matriz conjugada es " + str(matrix))
     return matrix
 
 
 def adjuntaMatriz(matrix):
-    print("La adjunta de la matriz es " +
-          str(conjugadaMatriz(transpuestaMatriz(matrix))))
     return conjugadaMatriz(transpuestaMatriz(matrix))
 
 
@@ -211,7 +202,6 @@ def multiplicacionDeMarticesIguales(mat1, mat2):
                     current = sumarComplejos(current, mult)
 
                 answ[i][j] = current
-        print("El producto de dos matrices es " + str(answ))
         return answ
 
 
@@ -220,13 +210,10 @@ def productoInternoVectores(vector1, vector2):
     for x in range(len(vector1)):
         answ = sumarComplejos(
             answ, multiplicarComplejos(vector1[x], vector2[x]))
-    print("Producto interno es " + str(answ))
     return answ
 
 
 def normaVector(vector):
-    print("La norma del vector es: " +
-          str(math.sqrt(abs(productoInternoVectores(vector, vector)[0]))))
     return math.sqrt(abs(productoInternoVectores(vector, vector)[0]))
 
 
@@ -235,13 +222,10 @@ def restaDeVectores(vect1, vect2):
         lista = []
         for i in range(len(vect1)):
             vect1[i] = restarComplejos(vect1[i], vect2[i])
-        print("Resta de vectores " + str(vect1))
         return (vect1)
 
 
 def distanciaEntreVectores(vector1, vector2):
-    print("Distancia entre vectores " +
-          str(normaVector(restaDeVectores(vector1, vector2))))
     return normaVector(restaDeVectores(vector1, vector2))
 
 
@@ -250,7 +234,6 @@ def matrizHermitaña(matrix):
     adjunta = adjuntaMatriz(matrix)
     if (adjunta == matrix):
         flag = True
-    print("La matriz es hermitaña " + str(flag))
     return flag
 
 def vectorAdjunta( vector ):
@@ -262,7 +245,7 @@ def vectorAdjunta( vector ):
 def multVector(vect1, vect2):
     acu = [0, 0]
     for c in range(len(vect1)):
-        acu = sumaDeVectores(acu, multiplicarComplejos(vect1[c], vect2[c]))
+        acu = sumarComplejos(acu, multiplicarComplejos(vect1[c], vect2[c]))
     return acu
 
 def internalProduct( vector1 , vector2 ):
@@ -320,6 +303,6 @@ def esUnitaria( matrix ):
     if row == col :
         adjoint = adjuntaMatriz( matrix )
         
-        return ( multiplicaMatriz( matrix , adjoint) == matrizIdentidad( matrix ) )or ( multiplicaMatriz( matrix , adjoint)  == multiplicaMatriz( adjoint , matrix) )
+        return (multiplicaMatriz(matrix, adjoint) == matrizIdentidad(matrix)) or (multiplicaMatriz(matrix, adjoint) == multiplicaMatriz(adjoint, matrix))
         
 main()

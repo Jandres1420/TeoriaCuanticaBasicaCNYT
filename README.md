@@ -18,6 +18,9 @@ con estos problemas
 - 4.3.2
 - 4.4.1
 - 4.4.2
+
+Para los ultims ejercicios 4.5.1 y 4.5.2 se hace las pruebas de calcular la probabilidad de encontrarlo ,la operacion bra,normalización de vectores y para finalizar el sistema calculara  el estado final a partir de un estado inicial.
+
 # Ejecución del programa
 Para un correcto uso del programa se usa el python numeroComplejos.py y se ejecuta el metodo main 
 

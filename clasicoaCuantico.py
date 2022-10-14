@@ -220,7 +220,7 @@ def describeAnObservable(psi, matrix):
     return None
 
 
-def translateEightnVector(vector):
+def traducirEigen(vector):
     """Traduce todos los valores propios de la libreria numpy a nuestra libreria"""
     answ = []
     for el in vector:
@@ -228,7 +228,7 @@ def translateEightnVector(vector):
     return answ
 
 
-def translateValues(val):
+def traducirValores(val):
     """Traduce todos los valores propios de la libreria numpy a nuestra libreria"""
     return [val.real, val.imag]
 
